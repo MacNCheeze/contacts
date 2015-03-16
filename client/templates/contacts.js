@@ -16,6 +16,20 @@ Template.contacts.rendered = function () {
 
 Template.contacts.helpers({
   contacts: function () {
-    return Contacts.find();
+    return Contacts.find({}, {sort: {order: 1}});
+  },
+  collection: function() {
+    return Contacts;
   }
+});
+
+
+Template.contacts.events({
+    'click .item-delete': function(event) {
+        event.preventDefault();
+
+        Contacts.remove({
+            _id: this._id
+        }, function(error, result) {});
+    }
 });

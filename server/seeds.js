@@ -18,7 +18,8 @@ Meteor.startup(function () {
         details: {
           notes: Fake.paragraph(),
           active: Fake.fromArray([true, false])
-        }
+        },
+        order: n
       });
     });
   }

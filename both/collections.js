@@ -104,5 +104,10 @@ Contacts.attachSchema(new SimpleSchema({
   avatarUrl: {
     type: String,
     optional: true
+  },
+  order: {
+    type: Number,
+    decimal: true,
+    optional: true
   }
 }));

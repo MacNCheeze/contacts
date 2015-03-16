@@ -7,6 +7,7 @@
 meteor-platform
 accounts-password
 iron:router
+insecure
 zimme:iron-router-active
 anti:fake
 matb33:collection-hooks

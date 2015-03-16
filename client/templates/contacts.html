@@ -1,20 +1,37 @@
 <template name="contacts">
+    {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear" data-ion-list-toggle="left">{{> ionIcon icon='ios-trash-outline'}}</button>
+    {{/contentFor}} 
+
   {{#contentFor "headerTitle"}}
     <h1 class="title">Contacts</h1>
   {{/contentFor}}
 
   {{#contentFor "headerButtonRight"}}
+  <div class="buttons">
     <button class="button button-clear" data-ion-modal="_contactsNew">{{> ionIcon icon="ios-plus-empty"}}</button>
+    <button class="button button-clear" data-ion-list-toggle="right">{{> ionIcon icon='ios-drag'}}</button>
+  </div>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
-      {{#ionList}}
+      {{#ionList collection=collection}}
         {{#each contacts}}
-          {{#ionItem path="contacts.show" buttonRight=true avatar=true class="item-icon-right"}}
+          {{#ionItem path="contacts.show" buttonRight=true avatar=true class="item-complex item-icon-right item-left-editable no-reorder"}}
+          <a class="item-content">
             <img src="{{avatarUrl}}">
-            {{name.first}} {{name.last}}
+            {{name.first}} {{name.last}} {{order}}
+          </a>
             {{> ionIcon icon="ios-arrow-forward" class="positive"}}
+    <div class="item-left-edit item-delete enable-pointer-events" style="background-color: white">
+        <ion-delete-button class="ion-minus-circled button icon button-icon">
+        </ion-delete-button>
+    </div>
+
+    <div class="item-right-edit item-reorder enable-pointer-events">
+        <ion-reorder-button class="ion-ios-drag button icon button-icon instant"></ion-reorder-button>
+    </div>
           {{/ionItem}}
         {{/each}}
       {{/ionList}}
